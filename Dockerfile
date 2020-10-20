@@ -43,5 +43,8 @@ ADD dav_svn.conf /etc/apache2/conf.d/dav_svn.conf
 # Set HOME in non /root folder
 ENV HOME /home
 
+# For healthcheck https://yeasy.gitbook.io/docker_practice/image/dockerfile/healthcheck
+HEALTHCHECK --interval=5s --timeout=3s \
+  CMD curl -fs http://localhost/ || exit 1
 # Expose ports for http and custom protocol access
 EXPOSE 80 443 3690
